@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#0C8A68" />
+<title>Vaibhav Peddakadapa</title>
+<meta name="description" content="Vaibhav Peddakadapa, Computer Engineering at NTU Singapore. Full stack development, AI and trading systems." />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📈</text></svg>" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #F3F6F9; --card: #FFFFFF; --ink: #16243A; --muted: #5A6A7E;
+    --line: #E1E7EE; --accent: #0C8A68; --accent-soft: #E3F4EE;
+    --shadow: 0 1px 2px rgba(22,36,58,.04), 0 12px 32px rgba(22,36,58,.06);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0E1621; --card: #152131; --ink: #E7EDF4; --muted: #93A3B6;
+      --line: #23334A; --accent: #34C79B; --accent-soft: #163A32;
+      --shadow: 0 12px 32px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0E1621; --card: #152131; --ink: #E7EDF4; --muted: #93A3B6;
+    --line: #23334A; --accent: #34C79B; --accent-soft: #163A32;
+    --shadow: 0 12px 32px rgba(0,0,0,.35);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+  body {
+    font-family: "Manrope", "Segoe UI", system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 48px 48px; background-attachment: fixed;
+    color: var(--ink); line-height: 1.7; font-size: 1rem; font-variant-numeric: tabular-nums;
+    padding: calc(3rem + env(safe-area-inset-top, 0px)) 1.25rem calc(3rem + env(safe-area-inset-bottom, 0px));
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; text-underline-offset: 3px; }
+  a:focus-visible, button:focus-visible, .news:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+
+  .shell { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 320px 1fr; gap: 2rem; align-items: start; }
+
+  /* Sidebar */
+  .side {
+    position: sticky; top: calc(2rem + env(safe-area-inset-top, 0px));
+    background: var(--card); border: 1px solid var(--line); border-radius: 22px;
+    box-shadow: var(--shadow); padding: 2.5rem 1.75rem 1.75rem; text-align: center;
+  }
+  .avatar { width: 190px; height: 190px; margin: 0 auto 1.5rem; border-radius: 50%; padding: 6px;
+    background: conic-gradient(from 200deg, var(--accent), var(--accent-soft), var(--accent)); }
+  .avatar-inner { width: 100%; height: 100%; border-radius: 50%; overflow: hidden; background: var(--accent-soft);
+    display: grid; place-items: center; border: 4px solid var(--card); }
+  .avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .initials { font-size: 3.2rem; font-weight: 800; color: var(--accent); letter-spacing: -.02em; }
+  .side h2 { font-size: 1.65rem; font-weight: 800; letter-spacing: -.02em; line-height: 1.2; }
+  .pill { display: inline-block; margin-top: .9rem; padding: .4rem 1rem; border-radius: 10px;
+    background: var(--accent-soft); color: var(--ink); font-size: .85rem; font-weight: 600; }
+  .links { list-style: none; margin-top: 2rem; text-align: left; display: grid; gap: .4rem; }
+  .links a, .links .static { display: flex; align-items: center; gap: .9rem; padding: .65rem .6rem; border-radius: 12px; color: var(--ink); text-decoration: none; }
+  .links a:hover { background: var(--bg); }
+  .ico { flex: none; width: 42px; height: 42px; border-radius: 11px; background: var(--bg); display: grid; place-items: center; color: var(--accent); }
+  .ico svg { width: 20px; height: 20px; }
+  .lbl { flex: 1; min-width: 0; font-weight: 600; font-size: .92rem; line-height: 1.35; }
+  .lbl small { display: block; font-weight: 500; color: var(--muted); font-size: .78rem; overflow-wrap: anywhere; }
+  .arrow { color: var(--muted); font-size: .9rem; }
+  .live { width: 9px; height: 9px; border-radius: 50%; background: #22B573; box-shadow: 0 0 0 4px rgba(34,181,115,.18); }
+  .fact { margin-top: 1.5rem; text-align: left; background: var(--bg); border-radius: 14px; padding: 1rem 1.1rem; font-size: .88rem; line-height: 1.6; }
+  .fact h3 { font-size: .9rem; font-weight: 800; margin-bottom: .3rem; }
+  .fact strong { color: var(--accent); }
+
+  /* Main */
+  main { background: var(--card); border: 1px solid var(--line); border-radius: 22px; box-shadow: var(--shadow); padding: 3rem 3rem 2.5rem; min-width: 0; }
+  h1 { font-size: clamp(2.2rem, 4vw, 2.9rem); font-weight: 800; letter-spacing: -.03em; line-height: 1.1; }
+  .spark { display: block; width: 120px; height: 28px; margin: .9rem 0 1.8rem; }
+  .spark path { fill: none; stroke: var(--accent); stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round;
+    stroke-dasharray: 200; stroke-dashoffset: 200; animation: draw 1.4s .2s ease-out forwards; }
+  .spark circle { fill: var(--accent); opacity: 0; animation: pop .3s 1.5s forwards; }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+  @keyframes pop { to { opacity: 1; } }
+
+  .bio p { max-width: 72ch; }
+  .bio p + p { margin-top: 1rem; }
+
+  section { margin-top: 3rem; }
+  .sec-head { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.4rem; }
+  .sec-head h3 { font-size: 1.55rem; font-weight: 800; letter-spacing: -.02em; white-space: nowrap; }
+  .sec-head::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+
+  /* News */
+  .news { border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: 16px; max-height: 420px; overflow-y: auto;
+    padding: 1.4rem 1.5rem 1.4rem 1.2rem; scrollbar-width: thin; scrollbar-color: var(--accent) transparent; }
+  .news ol { list-style: none; position: relative; }
+  .news ol::before { content: ""; position: absolute; left: 5px; top: 10px; bottom: 10px; width: 1px; background: var(--line); }
+  .news li { display: grid; grid-template-columns: 12px 64px 1fr; gap: 1rem; align-items: start; padding: .55rem 0; }
+  .dot { width: 11px; height: 11px; border-radius: 50%; background: var(--accent); margin-top: .5rem; position: relative; box-shadow: 0 0 0 4px var(--card); }
+  .date { font-size: .8rem; color: var(--muted); font-weight: 600; padding-top: .2rem; white-space: nowrap; }
+  .news p { font-size: .98rem; }
+
+  /* Logo strip */
+  .strip { overflow: hidden; border-radius: 14px; background: var(--bg); padding: 1.1rem 0; margin-bottom: 1.2rem;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+            mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); }
+  .track { display: flex; width: max-content; animation: slide 40s linear infinite; }
+  .strip:hover .track { animation-play-state: paused; }
+  .mark { flex: none; display: flex; flex-direction: column; justify-content: center; padding: 0 2.2rem; border-right: 1px solid var(--line); }
+  .mark b { font-size: 1.05rem; font-weight: 800; letter-spacing: -.01em; white-space: nowrap; }
+  .mark span { font-size: .78rem; color: var(--muted); white-space: nowrap; }
+  @keyframes slide { to { transform: translateX(-50%); } }
+
+  /* Entries */
+  .entry { display: grid; grid-template-columns: 1fr auto; gap: .2rem 1.5rem; padding: 1rem 0; border-bottom: 1px solid var(--line); }
+  .entry:last-child { border-bottom: 0; }
+  .entry h4 { font-size: 1.02rem; font-weight: 700; }
+  .entry .when { font-size: .85rem; color: var(--muted); font-weight: 600; text-align: right; white-space: nowrap; }
+  .entry .role { grid-column: 1 / -1; color: var(--muted); font-style: italic; font-size: .93rem; }
+  .entry .desc { grid-column: 1 / -1; font-size: .95rem; margin-top: .25rem; max-width: 72ch; }
+
+  /* Projects */
+  .filters { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1.1rem; }
+  .filters button { font: inherit; font-size: .85rem; font-weight: 700; color: var(--muted); background: transparent;
+    border: 1px solid var(--line); border-radius: 999px; padding: .35rem 1rem; cursor: pointer; }
+  .filters button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+  .proj { border: 1px solid var(--line); border-radius: 14px; padding: 1.2rem 1.25rem; display: flex; flex-direction: column; gap: .5rem; }
+  .proj[hidden] { display: none; }
+  .proj h4 { font-size: 1.02rem; font-weight: 700; }
+  .proj p { font-size: .92rem; color: var(--muted); flex: 1; }
+  .tags { display: flex; flex-wrap: wrap; gap: .4rem; }
+  .tags span { font-size: .75rem; font-weight: 600; background: var(--accent-soft); color: var(--ink); padding: .15rem .6rem; border-radius: 6px; }
+  .proj a { font-size: .88rem; font-weight: 700; }
+
+  /* Honours and certs */
+  .ranked { list-style: none; counter-reset: n; display: grid; gap: .1rem; }
+  .ranked li { counter-increment: n; display: grid; grid-template-columns: 2.4rem 1fr; align-items: baseline; padding: .55rem 0; border-bottom: 1px solid var(--line); }
+  .ranked li:last-child { border-bottom: 0; }
+  .ranked li::before { content: counter(n, decimal-leading-zero); font-weight: 800; color: var(--accent); font-size: .9rem; }
+  .ranked b { font-weight: 700; }
+  .ranked small { display: block; color: var(--muted); font-size: .85rem; }
+  .certs { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: .75rem; list-style: none; }
+  .certs li { border: 1px solid var(--line); border-radius: 12px; padding: .8rem 1rem; font-size: .92rem; font-weight: 600; }
+  .certs small { display: block; color: var(--muted); font-weight: 500; font-size: .8rem; }
+
+  footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--line); font-size: .82rem; color: var(--muted); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .spark path { animation: none; stroke-dashoffset: 0; }
+    .spark circle { animation: none; opacity: 1; }
+    .track { animation: none; flex-wrap: wrap; width: auto; row-gap: .8rem; }
+    .track [aria-hidden="true"] { display: none; }
+  }
+  @media (max-width: 900px) {
+    .shell { grid-template-columns: 1fr; }
+    .side { position: static; }
+    main { padding: 2rem 1.4rem; }
+  }
+  @media (max-width: 520px) {
+    .news li { grid-template-columns: 12px 1fr; }
+    .news .date { grid-column: 2; padding-top: 0; }
+    .news p { grid-column: 2; margin-top: -.6rem; }
+    .entry { grid-template-columns: 1fr; }
+    .entry .when { text-align: left; }
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <aside class="side">
+    <div class="avatar"><div class="avatar-inner">
+      <!-- Put your photo in the repo as profile.jpg -->
+      <img src="profile.jpg" alt="Portrait of Vaibhav Peddakadapa"
+           onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'initials',textContent:'VP'}))" />
+    </div></div>
+    <h2>Vaibhav Peddakadapa</h2>
+    <span class="pill">Computer Engineering @ NTU</span>
+
+    <ul class="links">
+      <li><a href="mailto:vaibhavpk718@gmail.com">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+        <span class="lbl">Email<small>vaibhavpk718@gmail.com</small></span><span class="arrow">↗</span></a></li>
+      <li><a href="https://www.linkedin.com/in/vaibhav-peddakadapa-064666216/" target="_blank" rel="noopener">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5.1c0-1.22-.02-2.79-1.7-2.79-1.7 0-1.96 1.33-1.96 2.7V21h-4z"/></svg></span>
+        <span class="lbl">LinkedIn</span><span class="arrow">↗</span></a></li>
+      <li><a href="https://github.com/vaibenz" target="_blank" rel="noopener">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.35 1.09 2.92.83.09-.65.35-1.09.64-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.56 9.56 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.85-2.34 4.7-4.57 4.94.36.31.68.92.68 1.86v2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg></span>
+        <span class="lbl">GitHub<small>vaibenz</small></span><span class="arrow">↗</span></a></li>
+      <li><span class="static">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.1-7-11.5a7 7 0 0 1 14 0C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>
+        <span class="lbl">Location<small>Singapore</small></span><span class="live" aria-hidden="true"></span></span></li>
+    </ul>
+
+    <div class="fact">
+      <h3>Fun fact about me</h3>
+      <p>I speak <strong>five languages</strong>: Telugu at home, English and Hindi fluently, and enough Tamil and Kannada to get by.</p>
+    </div>
+  </aside>
+
+  <main>
+    <h1>Vaibhav Peddakadapa</h1>
+    <svg class="spark" viewBox="0 0 120 28" aria-hidden="true">
+      <path d="M2 24 L18 18 L30 21 L46 12 L58 15 L74 8 L88 11 L104 4" />
+      <circle cx="108" cy="3" r="3.2" />
+    </svg>
+
+    <div class="bio">
+      <p>Vaibhav is a Year 2 Computer Engineering undergraduate at <a href="https://www.ntu.edu.sg" target="_blank" rel="noopener">Nanyang Technological University</a>, specialising in AI. He is most at home in full stack development, and is drawn to problems where technology meets finance: trading systems, pricing engines and data driven decision making. He holds the <a href="https://www.ntu.edu.sg" target="_blank" rel="noopener">NTU-Google Career Certificate Scholarship</a> and the <a href="https://aws.amazon.com" target="_blank" rel="noopener">AWS AI &amp; ML Scholarship</a>, and also writes in his spare time.</p>
+      <p>He was a Full Stack Developer Intern at <a href="https://www.tcs.com" target="_blank" rel="noopener">Tata Consultancy Services</a>, where he became the first person from Singapore to complete an overseas internship with the company under the Global Ready Talent Programme, working in the <a href="https://www.singaporeair.com" target="_blank" rel="noopener">Singapore Airlines</a> Offshore Delivery Centre. Before university, he served with the 1st Battalion Singapore Guards, where his platoon was named Best Platoon in Battalion.</p>
+    </div>
+
+    <section aria-labelledby="news">
+      <div class="sec-head"><h3 id="news">News</h3></div>
+      <div class="news" tabindex="0" aria-label="News, scrollable">
+        <ol>
+          <li><span class="dot"></span><span class="date">Oct ’26</span><p>Wrapped up <strong>NTU PEAK</strong> with Monee, presenting our team's solution for sustainable financing access for SMEs in Southeast Asia to C-suite leaders.</p></li>
+          <li><span class="dot"></span><span class="date">Sep ’26</span><p>Selected for <strong>NTU Global Mentorship Trip #13</strong> with GDEXA.</p></li>
+          <li><span class="dot"></span><span class="date">Aug ’26</span><p>Selected for the <strong>NTU PEAK Programme</strong>, taking on a business challenge with Monee as a Student Consultant.</p></li>
+          <li><span class="dot"></span><span class="date">Jul ’26</span><p>Completed my internship at <a href="https://www.tcs.com" target="_blank" rel="noopener">TCS</a>, the first person from Singapore to do an overseas internship with the company under the <strong>Global Ready Talent Programme</strong>.</p></li>
+          <li><span class="dot"></span><span class="date">May ’26</span><p>Selected for the <a href="https://www.sc.com" target="_blank" rel="noopener">SC x NTU LevelUp! Mentorship Programme</a>, mentored by the Head of Technology Operations at <a href="https://www.trustbank.sg" target="_blank" rel="noopener">Trust Bank Singapore</a>.</p></li>
+          <li><span class="dot"></span><span class="date">May ’26</span><p>Started as a Full Stack Developer Intern in the <strong>Singapore Airlines Offshore Delivery Centre</strong> at TCS.</p></li>
+          <li><span class="dot"></span><span class="date">Aug ’25</span><p>Began Computer Engineering at <a href="https://www.ntu.edu.sg" target="_blank" rel="noopener">NTU</a>.</p></li>
+          <li><span class="dot"></span><span class="date">Nov ’24</span><p>Completed National Service with the 1st Battalion Singapore Guards, after training with the <strong>US Marine Corps</strong> at Camp Pendleton and evaluations in Brunei and Australia.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section aria-labelledby="exp">
+      <div class="sec-head"><h3 id="exp">Experience</h3></div>
+      <div class="strip" aria-label="Organisations I have worked with">
+        <div class="track">
+          <div class="mark"><b>Tata Consultancy Services</b><span>Full Stack Developer Intern, 2026</span></div>
+          <div class="mark"><b>Standard Chartered</b><span>Student Mentee, 2026</span></div>
+          <div class="mark"><b>Monee</b><span>Student Consultant, 2026</span></div>
+          <div class="mark"><b>GDEXA</b><span>Student Mentee, 2026</span></div>
+          <div class="mark"><b>Singapore Guards</b><span>National Service, 2023</span></div>
+          <div class="mark" aria-hidden="true"><b>Tata Consultancy Services</b><span>Full Stack Developer Intern, 2026</span></div>
+          <div class="mark" aria-hidden="true"><b>Standard Chartered</b><span>Student Mentee, 2026</span></div>
+          <div class="mark" aria-hidden="true"><b>Monee</b><span>Student Consultant, 2026</span></div>
+          <div class="mark" aria-hidden="true"><b>GDEXA</b><span>Student Mentee, 2026</span></div>
+          <div class="mark" aria-hidden="true"><b>Singapore Guards</b><span>National Service, 2023</span></div>
+        </div>
+      </div>
+
+      <div class="entry"><h4>Tata Consultancy Services</h4><span class="when">May 2026 to Jul 2026</span><span class="role">Full Stack Developer Intern, Thiruporur</span>
+        <p class="desc">Built backend features in Java and Spring Boot and frontend interfaces in React.js, HTML and CSS for the Singapore Airlines Offshore Delivery Centre.</p></div>
+      <div class="entry"><h4>Monee</h4><span class="when">Aug 2026 to Oct 2026</span><span class="role">Student Consultant, NTU PEAK Programme</span>
+        <p class="desc">Worked on a business challenge on technology for sustainable financing access for SMEs in Southeast Asia.</p></div>
+      <div class="entry"><h4>Standard Chartered</h4><span class="when">May 2026 to Aug 2026</span><span class="role">Student Mentee, SC x NTU LevelUp! Mentorship Programme</span>
+        <p class="desc">Mentored by the Head of Technology Operations of Trust Bank Singapore, learning how the divisions and operations of Singapore's banking sector fit together.</p></div>
+      <div class="entry"><h4>GDEXA</h4><span class="when">Sep 2026 to Present</span><span class="role">Student Mentee, NTU Global Mentorship Trip #13</span></div>
+      <div class="entry"><h4>Self Employed</h4><span class="when">Dec 2024 to Jul 2025</span><span class="role">Private Tutor</span>
+        <p class="desc">Taught secondary school Math, A Math and Pure Chemistry with personalised lesson plans.</p></div>
+      <div class="entry"><h4>1st Battalion Singapore Guards</h4><span class="when">Jan 2023 to Nov 2024</span><span class="role">National Service, Ministry of Defence</span>
+        <p class="desc">Best Platoon in Battalion. Trained with the US Marine Corps at Camp Pendleton, California, and evaluated in Brunei and Australia.</p></div>
+    </section>
+
+    <section aria-labelledby="proj">
+      <div class="sec-head"><h3 id="proj">Projects</h3></div>
+      <div class="filters" role="group" aria-label="Filter projects">
+        <button type="button" data-f="all" aria-pressed="true">All</button>
+        <button type="button" data-f="quant" aria-pressed="false">Quant &amp; Trading</button>
+        <button type="button" data-f="ai" aria-pressed="false">AI &amp; Data</button>
+      </div>
+      <div class="projects">
+        <article class="proj" data-cat="quant ai">
+          <h4>AI Commodity Trading Bot</h4>
+          <p>Predicts commodity prices and generates buy and sell signals, with a backtesting framework and a data pipeline for model training and inference.</p>
+          <div class="tags"><span>Python</span><span>ML</span><span>Backtesting</span></div>
+          <a href="https://github.com/vaibenz" target="_blank" rel="noopener">View code ↗</a>
+        </article>
+        <article class="proj" data-cat="quant">
+          <h4>Limit Order Book Engine</h4>
+          <p>A matching engine supporting partial fills, cancellations and multiple order types.</p>
+          <div class="tags"><span>Java</span><span>Market microstructure</span></div>
+          <a href="https://github.com/vaibenz" target="_blank" rel="noopener">View code ↗</a>
+        </article>
+        <article class="proj" data-cat="quant">
+          <h4>Monte Carlo Pricing Engine</h4>
+          <p>A simulation engine for pricing, built on numerical and statistics libraries.</p>
+          <div class="tags"><span>Java</span><span>Simulation</span></div>
+          <a href="https://github.com/vaibenz" target="_blank" rel="noopener">View code ↗</a>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="hon">
+      <div class="sec-head"><h3 id="hon">Honours &amp; Awards</h3></div>
+      <ol class="ranked">
+        <li><div><b>NTU-Google Career Certificate Scholarship</b></div></li>
+        <li><div><b>AWS AI &amp; ML Scholarship</b></div></li>
+        <li><div><b>Global Ready Talent Programme</b><small>Tata Consultancy Services</small></div></li>
+        <li><div><b>Best Platoon in Battalion</b><small>1st Battalion Singapore Guards</small></div></li>
+      </ol>
+    </section>
+
+    <section aria-labelledby="cert">
+      <div class="sec-head"><h3 id="cert">Certifications</h3></div>
+      <ul class="certs">
+        <li>Google Project Management<small>Professional Certificate</small></li>
+        <li>Google Data Analytics<small>Professional Certificate</small></li>
+        <li>Foundations of Cybersecurity<small>Google</small></li>
+        <li>Crash Course on Python<small>Google</small></li>
+        <li>Project Planning: Putting It All Together<small>Google</small></li>
+      </ul>
+    </section>
+
+    <footer>Last updated October 2026</footer>
+  </main>
+</div>
+
+<script>
+  const btns = document.querySelectorAll('.filters button');
+  const cards = document.querySelectorAll('.proj');
+  btns.forEach(b => b.addEventListener('click', () => {
+    btns.forEach(x => x.setAttribute('aria-pressed', x === b));
+    cards.forEach(c => { c.hidden = b.dataset.f !== 'all' && !c.dataset.cat.includes(b.dataset.f); });
+  }));
+</script>
+</body>
+</html>
